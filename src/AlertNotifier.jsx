@@ -119,6 +119,7 @@ const alertBoxBaseStyle = {
   minWidth: '250px',
   border: '1px solid',
   boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+  transition: 'opacity 0.5s ease-out',
 };
 
 //익스포트~~~~~~~~~~~~~
