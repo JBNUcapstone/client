@@ -51,13 +51,13 @@ const AlertNotifier = () => {
     switch (type) {
       case 'DoS':
         return {
-          backgroundColor: '#A0522D',
-          borderColor: '#8B4513'
+          backgroundColor: 'rgb(196, 126, 138)',
+          borderColor: 'rgb(170, 40, 23)'
         };
       case 'Replay':
         return {
-          backgroundColor: '#e3f7ff',
-          borderColor: '#4dabf7'
+          backgroundColor: 'rgb(224, 209, 180)',
+          borderColor: 'rgb(204, 126, 24)'
         };
       case 'DataInjection_InvalidJSON':
         return {
