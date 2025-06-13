@@ -14,3 +14,6 @@ http://localhost:5173/
 ![스마트팜실시간그래프 동영상](https://github.com/user-attachments/assets/084ebe36-7002-4e80-8a4b-d64122c74581)
 ### 센서 별 과거 데이터 조회
 ![과거 데이터 센서 조회](https://github.com/user-attachments/assets/f7090caa-86e6-417e-b4dc-ace14601643f)
+### IDS 실시간 알림
+![알람시연영상](https://github.com/user-attachments/assets/4c981755-7a95-4b02-a6ab-5ca760baf060)
+
