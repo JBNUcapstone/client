@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './AlertNotifier.css';
 
 const SSE_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
@@ -16,19 +17,27 @@ const AlertNotifier = () => {
     //리스너너어어어어어
     eventSource.addEventListener('alert_event', (e) => {
       try {
-        const alert = JSON.parse(e.data);
-        console.warn('🚨 ALERT:', alert);
+        const alert = { ...JSON.parse(e.data), visible: true };
         setAlerts(prev => [...prev, alert]);
+
+        // 5초 후 스르르르르르르륵 사라짐!
+        setTimeout(() => {
+          setAlerts(prev =>
+            prev.map((a, i) => (i === 0 ? { ...a, visible: false } : a))
+          );
+        }, 5000);
+
+        // 5.5초 후 아예 안보임!
         setTimeout(() => {
           setAlerts(prev => prev.slice(1));
-        }, 5000);
+        }, 5500);
       } catch (err) {
-        console.error(' Alert parse error:', err);
+        console.error('Alert parse error:', err);
       }
     });
 
     eventSource.onerror = (err) => {
-      console.error(' Alert SSE error', err);
+      console.error('Alert SSE error', err);
       eventSource.close();
     };
 
@@ -42,8 +51,8 @@ const AlertNotifier = () => {
     switch (type) {
       case 'DoS':
         return {
-          backgroundColor: '#ffe3e3',
-          borderColor: '#ff6b6b'
+          backgroundColor: '#A0522D',
+          borderColor: '#8B4513'
         };
       case 'Replay':
         return {
@@ -74,7 +83,11 @@ const AlertNotifier = () => {
       {alerts.map((alert, idx) => {
         const alertStyle = getAlertStyleByType(alert.type);
         return (
-          <div key={idx} style={{ ...alertBoxBaseStyle, ...alertStyle }}>
+          <div
+            key={idx}
+            className={`alert-box ${alert.visible ? 'fade-in' : 'fade-out'}`}
+            style={{ ...alertBoxBaseStyle, ...alertStyle }}
+          >
             <strong>🚨 {alert.type}</strong>
             <div style={{ fontSize: '12px', marginTop: '4px' }}>
               {new Date(alert.timestamp).toLocaleString()}

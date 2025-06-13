@@ -1,0 +1,12 @@
+.alert-box {
+  opacity: 1;
+}
+
+.fade-in {
+  opacity: 1;
+}
+/* 사라지는효과 */
+.fade-out { 
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
